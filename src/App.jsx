@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import axios from "axios"; 
-import 'bootstrap/dist/css/bootstrap.min.css';
-const backendUrl=import.meta.env.BACKEND_URL || "http//localhost:3001";
-
-
-
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Books from "./Books";
+import { Route, Routes } from "react-router-dom";
+import About from "./About";
+const backendUrl = import.meta.env.BACKEND_URL || "http://localhost:3001";
 
 class BestBooks extends Component {
   state = {
@@ -13,19 +13,21 @@ class BestBooks extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get("/books");   
-            this.setState({ books: response.data });
+      const response = await axios.get(backendUrl + "/books");
+      this.setState({ books: response.data });
     } catch (error) {
       console.error("Error fetching books:", error);
     }
   }
 
-  renderBooks() {
-    if (this.state.books.length === 0) {
-      return <p>Out of Books.</p>;
-    }
-
-};
+  render() {
+    return (
+      // add nave bar here 
+      <Routes>
+        <Route path="/" element={<Books books={this.state.books}/>} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    );
+  }
 }
 export default BestBooks;
-

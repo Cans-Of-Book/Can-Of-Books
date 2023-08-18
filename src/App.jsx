@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+const backendUrl=import.meta.env.BACKEND_URL || "http//localhost:3001";
 
 
 

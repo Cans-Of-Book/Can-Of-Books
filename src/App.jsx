@@ -43,6 +43,7 @@ class BestBooks extends Component {
                   <h3>{book.title}</h3>
                   <p>{book.author}</p>
                   <p>{book.description}</p>
+                  <p>{book.URL}</p>
                   </Carousel.Caption>
                   </Carousel.Item>
                   </Carousel>

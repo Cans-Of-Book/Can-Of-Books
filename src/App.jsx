@@ -26,6 +26,7 @@ class BestBooks extends Component {
       <Routes>
         <Route path="/" element={<Books books={this.state.books}/>} />
         <Route path="/about" element={<About />} />
+        <h1>This page is about three books that are a great read.</h1>
       </Routes>
     );
   }

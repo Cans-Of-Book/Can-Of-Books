@@ -19,6 +19,25 @@ class BestBooks extends Component {
       console.error("Error fetching books:", error);
     }
   }
+  renderBooks() {
+    if (this.state.books.length === 0) {
+      return <p>No More Books.</p>;
+    } else {
+      return (
+        <div>
+          <div>
+            {this.state.books.map((book, index) => (
+              <div key={index}>
+                  <h3>{book.title}</h3>
+                  <p>{book.author}</p>
+                  <p>{book.description}</p>
+                </div>
+              ))}
+          </div>
+        </div>
+      );
+    }
+  }
 
   render() {
     return (
@@ -26,6 +45,7 @@ class BestBooks extends Component {
       <Routes>
         <Route path="/" element={<Books books={this.state.books}/>} />
         <Route path="/about" element={<About />} />
+        <h1>This page is about three books that are a great read.</h1>
       </Routes>
     );
   }

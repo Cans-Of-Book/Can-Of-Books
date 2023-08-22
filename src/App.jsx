@@ -11,6 +11,7 @@ const backendUrl = import.meta.env.BACKEND_URL || "http://localhost:3001";
 class BestBooks extends Component {
   state = {
     books: [],
+    showAddForm: false,
   };
 
   async componentDidMount() {
@@ -56,17 +57,35 @@ class BestBooks extends Component {
     }
   }
 
+  handleBookAdded = (newBook) => {
+    // Update the state to include the new book
+    this.setState((prevState) => ({
+      books: [...prevState.books, newBook],
+      showAddForm: false, // Close the modal after adding
+    }));
+  };
+
   render() {
     return (
-      // add nave bar here
+      <div>
+      
+        <Button type="submit">Add Book</Button>
+        <BookFormModal
+        show={this.state.showAddForm}
+        onHide={() => this.setState({ showAddForm: false })}
+        onBookAdded={this.handleBookAdded}
+      />
       
       <Routes>
         <Route path="/" element={<Books books={this.state.books}/>} />
         <Route path="/about" element={<About />} />
         
       </Routes>
+      </div>
     );
+  
   }
+  
 }
 export default BestBooks;
  

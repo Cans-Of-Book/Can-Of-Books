@@ -58,12 +58,13 @@ class BestBooks extends Component {
   }
 
   handleBookAdded = (newBook) => {
-    // Update the state to include the new book
+    
     this.setState((prevState) => ({
       books: [...prevState.books, newBook],
-      showAddForm: false, // Close the modal after adding
+      showAddForm: false, 
     }));
   };
+  
 
   render() {
     return (

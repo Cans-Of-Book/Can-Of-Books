@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Form, Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Books from "./Books";
 import { Route, Routes } from "react-router-dom";
@@ -10,6 +11,7 @@ const backendUrl = import.meta.env.BACKEND_URL || "http://localhost:3001";
 class BestBooks extends Component {
   state = {
     books: [],
+    showAddForm: false,
   };
 
   async componentDidMount() {
@@ -43,6 +45,7 @@ class BestBooks extends Component {
                   <h3>{book.title}</h3>
                   <p>{book.author}</p>
                   <p>{book.description}</p>
+                  <p>{book.URL}</p>
                   </Carousel.Caption>
                   </Carousel.Item>
                   </Carousel>
@@ -54,17 +57,41 @@ class BestBooks extends Component {
     }
   }
 
+  handleBookAdded = (newBook) => {
+    
+    this.setState((prevState) => ({
+      books: [...prevState.books, newBook],
+      showAddForm: false, 
+    }));
+  };
+  
+
   
 
   render() {
     return (
-      // add nave bar here 
+      <div>
+      
+        <Button type="submit">Add Book</Button>
+        <BookFormModal
+        show={this.state.showAddForm}
+        onHide={() => this.setState({ showAddForm: false })}
+        onBookAdded={this.handleBookAdded}
+      />
+      
       <Routes>
         <Route path="/" element={<Books books={this.state.books}/>} />
         <Route path="/about" element={<About />} />
-        <h1>This page is about three books that are a great read.</h1>
+        
       </Routes>
+      </div>
     );
+  
   }
+  
 }
+
+
+
 export default BestBooks;
+ 

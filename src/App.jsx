@@ -75,7 +75,6 @@ class BestBooks extends Component {
   render() {
     return (
       <div>
-      
         <Button type="submit">Add Book</Button>
         <BookFormModal
         show={this.state.showAddForm}

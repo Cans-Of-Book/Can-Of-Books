@@ -58,14 +58,17 @@ class BestBooks extends Component {
     }
   }
 
-  handleBookAdded = (newBook) => {
-    
-    this.setState((prevState) => ({
-      books: [...prevState.books, newBook],
-      showAddForm: false, 
-    }));
+  handleBookAdded = async (newBook) => {
+    try {
+      const response = await axios.post(backendUrl + "/books", newBook);
+      this.setState((prevState) => ({
+        books: [...prevState.books, response.data],
+        showAddForm: false,
+      }));
+    } catch (error) {
+      console.error("Error adding book:", error);
+    }
   };
-  
 
   
 

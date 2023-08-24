@@ -25,11 +25,10 @@ class BestBooks extends Component {
   }
 
   async createBook(bookObj) {
-    let backendUrl = `${BACKEND_URL}`;
+    let backendUrl = `${BACKEND_URL}/Books`;
     let newBook = axios.post(backendUrl, bookObj)
-    this.fetchBooks();
-
-  }
+    this.fetchBook();
+}
 
 
 

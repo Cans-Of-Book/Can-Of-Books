@@ -24,7 +24,8 @@ class BestBooks extends Component {
     }
   }
 
-  async createBook () {
+  async createBook (bookObj) {
+    let backendUrl = `${BACKEND_URL}`;
 
   }
 

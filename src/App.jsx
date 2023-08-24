@@ -30,7 +30,9 @@ class BestBooks extends Component {
     this.fetchBook();
 }
 
-
+async deleteBook(){
+  
+}
 
   renderBooks() {
     if (this.state.books.length === 0) {

@@ -32,7 +32,7 @@ class BestBooks extends Component {
 
 async deleteBook(){
   let backendUrl = `${BACKEND_URL}/Books`;
-
+  await axios.delete(backendUrl);
 }
 
   renderBooks() {

@@ -31,7 +31,8 @@ class BestBooks extends Component {
 }
 
 async deleteBook(){
-  
+  let backendUrl = `${BACKEND_URL}/Books`;
+
 }
 
   renderBooks() {

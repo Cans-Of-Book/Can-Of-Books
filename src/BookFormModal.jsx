@@ -14,6 +14,7 @@ class BookFormModal extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.book !== prevProps.book) {
       this.setState({
+        title: this.props.book.title,
   }
 
   handleInputChange = (event) => {

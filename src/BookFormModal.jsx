@@ -42,7 +42,7 @@ class BookFormModal extends Component {
     
     try {
       const response = await axios.put(
-        backendUrl + "/books/" + this.props.book.id, // Assuming the book has an 'id' property
+        backendUrl + "/books/" + this.props.book.id, 
         updatedBook
       );
 

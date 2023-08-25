@@ -17,7 +17,9 @@ class BookFormModal extends Component {
         title: this.props.book.title,
         author: this.props.book.author,
         URL: this.props.book.URL,
+      });
   }
+}
 
   handleInputChange = (event) => {
     const { name, value } = event.target;

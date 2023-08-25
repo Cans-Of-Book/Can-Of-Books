@@ -96,7 +96,7 @@ class BookFormModal extends Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="secondary" type="submit">
               Save Book
             </Button>
           </Form>

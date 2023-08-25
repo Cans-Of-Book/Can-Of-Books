@@ -21,6 +21,7 @@ class BookFormModal extends Component {
   }
 }
 
+
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -40,20 +41,14 @@ class BookFormModal extends Component {
 
     
     try {
-      const response = await axios.post(backendUrl + "/books", newBook);
-      
-      this.props.onBookAdded(response.data);
-      
-      this.setState({
-        title: "",
-        author: "",
-        description: "",
-        URL: "",
-        
-      });
+      const response = await axios.put(
+        backendUrl + "/books/" + this.props.book.id, // Assuming the book has an 'id' property
+        updatedBook
+      );
+
+      this.props.onBookUpdated(response.data); 
     } catch (error) {
-      console.error("Error adding new book:", error);
-      
+      console.error("Error updating book:", error);
     }
   };
 

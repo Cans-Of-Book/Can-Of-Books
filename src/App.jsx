@@ -23,6 +23,18 @@ class BestBooks extends Component {
       console.error("Error fetching books:", error);
     }
   }
+
+  async createBook(bookObj) {
+    let backendUrl = `${BACKEND_URL}/Books`;
+    let newBook = await axios.post(backendUrl, bookObj)
+    this.fetchBook();
+}
+
+async deleteBook(){
+  let backendUrl = `${BACKEND_URL}/Books`;
+  await axios.delete(backendUrl);
+}
+
   renderBooks() {
     if (this.state.books.length === 0) {
       return <p>No More Books.</p>;
@@ -69,8 +81,6 @@ class BestBooks extends Component {
       console.error("Error adding book:", error);
     }
   };
-
-  
 
   render() {
     return (

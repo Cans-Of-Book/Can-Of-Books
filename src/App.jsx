@@ -86,7 +86,7 @@ async deleteBook(){
   render() {
     return (
       <div>
-        <Button type="submit">Add Book</Button>
+        <Button onClick={() => this.setState({showAddForm: true}) } type="submit">Add Book</Button>
         <BookFormModal
         show={this.state.showAddForm}
         onHide={() => this.setState({ showAddForm: false })}
@@ -112,93 +112,3 @@ export default BestBooks;
 
 
 
-// import React, { Component } from "react";
-// import axios from "axios";
-// import { Form, Button } from "react-bootstrap";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import { Route, Routes } from "react-router-dom";
-// import { Carousel } from "react-bootstrap";
-// import BookFormModal from "./BookFormModal";
-
-// const backendUrl = import.meta.env.BACKEND_URL || "http://localhost:3001";
-
-// class BestBooks extends Component {
-//   state = {
-//     books: [],
-//     showAddForm: false,
-//     editingBook: null,
-//   };
-
-//   async componentDidMount() {
-//     try {
-//       const response = await axios.get(backendUrl + "/books");
-//       this.setState({ books: response.data });
-//     } catch (error) {
-//       console.error("Error fetching books:", error);
-//     }
-//   }
-
-//   startEditingBook = (book) => {
-//     this.setState({
-//       editingBook: book,
-//       showAddForm: true,
-//     });
-//   };
-
-//   cancelEditing = () => {
-//     this.setState({
-//       editingBook: null,
-//       showAddForm: false,
-//     });
-//   };
-
-//   handleBookUpdated = (updatedBook) => {
-//     const updatedBooks = this.state.books.map((book) =>
-//       book.id === updatedBook.id ? updatedBook : book
-//     );
-//     this.setState({
-//       books: updatedBooks,
-//       editingBook: null,
-//       showAddForm: false,
-//     });
-//   };
-
-//   renderBooks() {
-//     if (this.state.books.length === 0) {
-//       return <p>No More Books.</p>;
-//     } else {
-//       return (
-//         <div>
-//           {this.state.books.map((book, index) => (
-//             <div key={index}>
-//               <Carousel>
-//                 {/* ... */}
-//                 <Carousel.Caption>
-//                   {/* ... */}
-//                   <Button onClick={() => this.startEditingBook(book)}>Edit</Button>
-//                 </Carousel.Caption>
-//               </Carousel>
-//             </div>
-//           ))}
-//         </div>
-//       );
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         {/* ... */}
-//         <BookFormModal
-//           show={this.state.showAddForm || this.state.editingBook !== null}
-//           onHide={this.cancelEditing}
-//           book={this.state.editingBook}
-//           onBookUpdated={this.handleBookUpdated}
-//         />
-//         {/* ... */}
-//       </div>
-//     );
-//   }
-// }
-
-// export default BestBooks;

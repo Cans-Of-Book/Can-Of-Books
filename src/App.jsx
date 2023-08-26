@@ -30,11 +30,12 @@ class BestBooks extends Component {
     let newBook = await axios.post(backendUrl, bookObj)
     this.fetchBook();
 }
-
-async deleteBook(){
-  let backendUrl = `${BACKEND_URL}/Books`;
+async deleteBook(id){
+  let backendUrl = `${BACKEND_URL}/Books${id}`;
   await axios.delete(backendUrl);
 }
+
+
 
   renderBooks() {
     if (this.state.books.length === 0) {
@@ -45,7 +46,7 @@ async deleteBook(){
           <div>
             {this.state.books.map((book, index) => (
               <Carousel>
-              <Carousel.Item key={index}>
+              <Carousel.Item   key={index}>
                 <img className="d-block w-100"
                 src="https://www.google.com/books/edition/The_Color_Purple/1W8-c_m-noEC?hl=en&gbpv=1&dq=the%20color%20purple&pg=PP1&printsec=frontcover"
                 alt="Slide 1"/>
@@ -60,6 +61,7 @@ async deleteBook(){
                   <p>{book.author}</p>
                   <p>{book.description}</p>
                   <p>{book.URL}</p>
+                  <Button onClick={() => {this.deleteBook(book._id)}} id='deleteBook'>Delete Book</Button>
                   </Carousel.Caption>
                   </Carousel.Item>
                   </Carousel>

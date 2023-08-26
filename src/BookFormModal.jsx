@@ -15,7 +15,7 @@ class BookFormModal extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.book !== prevProps.book) {
       this.setState({
-        title: this.props.book.title,
+        Title: this.props.book.title,
         author: this.props.book.author,
         URL: this.props.book.URL,
       });
@@ -33,24 +33,15 @@ class BookFormModal extends Component {
 
     
     const newBook = {
-      title: this.state.title,
+      Title: this.state.title,
       author: this.state.author,
       description: this.state.description,
       URL: this.state.URL,
       
     };
+    console.log(newBook)
+    this.props.onBookAdded(newBook); 
 
-    try {
-      const response = await axios.post(
-        backendUrl + "/books", 
-        newBook
-      );
-
-      this.props.onBookAdded(response.data); 
-    } catch (error) {
-      console.error("Error updating book:", error);
-    }
-  };
 
   render() {
     return (

@@ -44,9 +44,7 @@ class BookFormModal extends Component {
   
   
    
-  //     );
-
-  //     this.props.onBookAdded(response.data); 
+ 
   //   } catch (error) {
   //     console.error("Error updating book:", error);
   //   }

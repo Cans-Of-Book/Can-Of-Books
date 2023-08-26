@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
+import axios from "axios";
 
 class BookFormModal extends Component {
   state = {
@@ -9,6 +10,17 @@ class BookFormModal extends Component {
     URL: "",
     
   };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.book !== prevProps.book) {
+      this.setState({
+        title: this.props.book.title,
+        author: this.props.book.author,
+        URL: this.props.book.URL,
+      });
+  }
+}
+
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -29,20 +41,14 @@ class BookFormModal extends Component {
 
     
     try {
-      const response = await axios.post(backendUrl + "/books", newBook);
-      
-      this.props.onBookAdded(response.data);
-      
-      this.setState({
-        title: "",
-        author: "",
-        description: "",
-        URL: "",
-        
-      });
+      const response = await axios.put(
+        backendUrl + "/books/" + this.props.book.id, 
+        updatedBook
+      );
+
+      this.props.onBookUpdated(response.data); 
     } catch (error) {
-      console.error("Error adding new book:", error);
-      
+      console.error("Error updating book:", error);
     }
   };
 
@@ -90,7 +96,7 @@ class BookFormModal extends Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="secondary" type="submit">
               Save Book
             </Button>
           </Form>

@@ -1,6 +1,6 @@
 # Start your own "Can of Books" App
 
-This repository has starter code to begin work on creating your own online bookshelf.
+This repository has starter code to begin work on creating your own online bookshelf!
 
 ## What can books do?
 

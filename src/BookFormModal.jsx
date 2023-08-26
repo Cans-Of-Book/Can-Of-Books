@@ -43,8 +43,7 @@ class BookFormModal extends Component {
     this.props.onBookAdded(newBook); 
   
   
-  //       backendUrl + "/books", 
-  //       newBook
+   
   //     );
 
   //     this.props.onBookAdded(response.data); 

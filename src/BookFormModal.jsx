@@ -41,7 +41,7 @@ class BookFormModal extends Component {
     };
     console.log(newBook)
     this.props.onBookAdded(newBook); 
-
+  }
 
   render() {
     return (

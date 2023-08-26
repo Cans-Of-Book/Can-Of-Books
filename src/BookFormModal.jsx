@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import axios from "axios";
+const backendUrl = import.meta.env.BACKEND_URL || "http://localhost:3001";
+
 
 class BookFormModal extends Component {
   state = {
@@ -8,7 +10,6 @@ class BookFormModal extends Component {
     author: "",
     description: "",
     URL: "",
-    
   };
 
   componentDidUpdate(prevProps) {
@@ -39,14 +40,13 @@ class BookFormModal extends Component {
       
     };
 
-    
     try {
-      const response = await axios.put(
-        backendUrl + "/books/" + this.props.book.id, 
-        updatedBook
+      const response = await axios.post(
+        backendUrl + "/books", 
+        newBook
       );
 
-      this.props.onBookUpdated(response.data); 
+      this.props.onBookAdded(response.data); 
     } catch (error) {
       console.error("Error updating book:", error);
     }
@@ -96,7 +96,7 @@ class BookFormModal extends Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <Button variant="secondary" type="submit">
+            <Button variant="primary" type="submit">
               Save Book
             </Button>
           </Form>
@@ -107,3 +107,4 @@ class BookFormModal extends Component {
 }
 
 export default BookFormModal;
+

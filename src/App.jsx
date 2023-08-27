@@ -34,6 +34,10 @@ async deleteBook(id){
   let backendUrl = `${BACKEND_URL}/Books${id}`;
   await axios.delete(backendUrl);
 }
+async updateBook(id){
+  let backendUrl = `${BACKEND_URL}/Books${id}`;
+  await axios.put(backendUrl);
+}
 
 
 

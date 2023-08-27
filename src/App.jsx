@@ -25,7 +25,7 @@ class BestBooks extends Component {
     }
   }
 
-  async createBook(bookObj) {
+  async createBook(bookObj, id) {
     let backendUrl = `${BACKEND_URL}/Books`;
     let newBook = await axios.post(backendUrl, bookObj)
     this.fetchBook();
@@ -34,9 +34,9 @@ async deleteBook(id){
   let backendUrl = `${BACKEND_URL}/Books${id}`;
   await axios.delete(backendUrl);
 }
-async updateBook(id){
+async updateBook(bookObj, id){
   let backendUrl = `${BACKEND_URL}/Books${id}`;
-  await axios.put(backendUrl);
+  await axios.put(backendUrl, bookObj);
 }
 
 
@@ -96,6 +96,13 @@ async updateBook(id){
         show={this.state.showAddForm}
         onHide={() => this.setState({ showAddForm: false })}
         onBookAdded={this.handleBookAdded}
+      />
+
+<Button onClick={() => this.setState({showAddForm: true}) } type="submit">Update Book</Button>
+        <BookFormModal
+        show={this.state.showAddForm}
+        onHide={() => this.setState({ showAddForm: false })}
+        onBookAdded={this.updateBook}
       />
       
       <Routes>

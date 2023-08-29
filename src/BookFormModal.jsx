@@ -40,7 +40,7 @@ class BookFormModal extends Component {
       
     };
     console.log(newBook)
-    this.props.onBookAdded(newBook); 
+    this.props.onBookAdded(newBook,this.props.id); 
   }
 
   render() {
@@ -53,7 +53,7 @@ class BookFormModal extends Component {
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
-              <Form.Control
+              <Form.Control id="title"
                 type="text"
                 name="title"
                 value={this.state.title}
@@ -87,7 +87,7 @@ class BookFormModal extends Component {
                 onChange={this.handleInputChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="success" type="submit">
               Save Book
             </Button>
           </Form>

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {Form, Button} from "react-bootstrap";
+import {Form, Button, Carousel} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Books from "./Books";
 import { Route, Routes } from "react-router-dom";
 import About from "./About";
-import { Carousel } from "bootstrap";
 import BookFormModal from "./BookFormModal";
 const backendUrl = import.meta.env.BACKEND_URL || "http://localhost:3001";
 

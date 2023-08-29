@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-import {Form, Button, Carousel} from "react-bootstrap";
-=======
 import { Form, Button, Carousel, Image } from "react-bootstrap";
->>>>>>> main
 import "bootstrap/dist/css/bootstrap.min.css";
 import Books from "./Books";
 import { Route, Routes } from "react-router-dom";

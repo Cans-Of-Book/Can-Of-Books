@@ -35,8 +35,8 @@ class BookFormModal extends Component {
     
     const newBook = {
       Title: this.state.Title,
-      author: this.state.Author,
-      description: this.state.Description,
+      Author: this.state.Author,
+      Description: this.state.Description,
       URL: this.state.URL,
       
     };

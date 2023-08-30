@@ -6,17 +6,18 @@ const backendUrl = import.meta.env.BACKEND_URL || "http://localhost:3001";
 
 class BookFormModal extends Component {
   state = {
-    title: "",
-    author: "",
-    description: "",
+    Title: "",
+    Author: "",
+    Description: "",
     URL: "",
   };
 
   componentDidUpdate(prevProps) {
     if (this.props.book !== prevProps.book) {
       this.setState({
-        Title: this.props.book.title,
-        author: this.props.book.author,
+        Title: this.props.book.Title,
+        Author: this.props.book.Author,
+        Description:  this.props.book.Description,
         URL: this.props.book.URL,
       });
   }
@@ -33,9 +34,9 @@ class BookFormModal extends Component {
 
     
     const newBook = {
-      Title: this.state.title,
-      author: this.state.author,
-      description: this.state.description,
+      Title: this.state.Title,
+      Author: this.state.Author,
+      Description: this.state.Description,
       URL: this.state.URL,
       
     };
@@ -56,7 +57,7 @@ class BookFormModal extends Component {
               <Form.Control id="title"
                 type="text"
                 name="title"
-                value={this.state.title}
+                value={this.state.Title}
                 onChange={this.handleInputChange}
               />
             </Form.Group>
@@ -65,7 +66,7 @@ class BookFormModal extends Component {
               <Form.Control
                 type="text"
                 name="author"
-                value={this.state.author}
+                value={this.state.Author}
                 onChange={this.handleInputChange}
               />
             </Form.Group>
@@ -74,7 +75,7 @@ class BookFormModal extends Component {
               <Form.Control
                 type="text"
                 name="description"
-                value={this.state.description}
+                value={this.state.Description}
                 onChange={this.handleInputChange}
               />
             </Form.Group>
@@ -98,4 +99,3 @@ class BookFormModal extends Component {
 }
 
 export default BookFormModal;
-

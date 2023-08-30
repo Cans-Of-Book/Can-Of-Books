@@ -40,6 +40,17 @@ class BestBooks extends Component {
     }
   }
 
+  async deleteBook(id) {
+    try {
+      await axios.delete(`${BACKEND_URL}/Books/${id}`);
+      this.setState((prevState) => ({
+        books: prevState.books.filter((book) => book._id !== id),
+      }));
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  }
+
   handleBookAdded = async (newBook) => {
     try {
       const response = await axios.post(`${BACKEND_URL}/books`, newBook);
@@ -71,7 +82,7 @@ class BestBooks extends Component {
                   <h3 style={{color: 'black'}}>{book.Title}</h3>
                   <p style={{color: 'black'}}>{book.Author}</p>
                   <p style={{color: 'black'}}>{book.Description}</p>
-                  <Button variant="danger" onClick={() => {this.deleteBook(book._id)}} id='deleteBook'>Delete Book</Button> 
+                  <Button variant="danger" onClick={() => this.deleteBook(book._id)}>Delete Book</Button> 
                   <Button variant="secondary" onClick={() => this.setState({ showUpdateForm: true, selectedBook:  book._id, })}>
                     Update Book
                   </Button>

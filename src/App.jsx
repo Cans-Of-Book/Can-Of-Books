@@ -67,9 +67,9 @@ class BestBooks extends Component {
                   alt={`Slide ${index + 1}`}
                 />
                 <Carousel.Caption>
-                  <h3>{book.title}</h3>
-                  <p>{book.author}</p>
-                  <p>{book.description}</p>
+                  <h3>{book.Title}</h3>
+                  <p>{book.Author}</p>
+                  <p>{book.Description}</p>
                   <Button variant="danger" onClick={() => {this.deleteBook(book._id)}} id='deleteBook'>Delete Book</Button> 
                   <Button variant="secondary" onClick={() => this.setState({ showUpdateForm: true })}>
                     Update Book

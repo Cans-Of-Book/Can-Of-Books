@@ -99,4 +99,3 @@ class BookFormModal extends Component {
 }
 
 export default BookFormModal;
-

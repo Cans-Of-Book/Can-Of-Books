@@ -104,4 +104,3 @@ class BestBooks extends Component {
 }
 
 export default BestBooks;
-

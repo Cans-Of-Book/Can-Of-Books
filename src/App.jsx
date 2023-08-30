@@ -14,6 +14,7 @@ class BestBooks extends Component {
     books: [],
     showAddForm: false,
     showUpdateForm: false,
+    selectedBook: null,
   };
 
   async componentDidMount() {
@@ -71,14 +72,14 @@ class BestBooks extends Component {
                   <p>{book.Author}</p>
                   <p>{book.Description}</p>
                   <Button variant="danger" onClick={() => {this.deleteBook(book._id)}} id='deleteBook'>Delete Book</Button> 
-                  <Button variant="secondary" onClick={() => this.setState({ showUpdateForm: true })}>
+                  <Button variant="secondary" onClick={() => this.setState({ showUpdateForm: true, selectedBook:  book._id, })}>
                     Update Book
                   </Button>
                   <BookFormModal
-                    id={book._id}
+                    id={this.state.selectedBook}
                     show={this.state.showUpdateForm}
-                    onHide={() => this.setState({ showUpdateForm: false })}
-                    onBookAdded={(updatedBook) => this.updateBook(updatedBook, book._id)}
+                    onHide={() => this.setState({ showUpdateForm: false, selectedBook: null })}
+                    onBookAdded={(updatedBook) => this.updateBook(updatedBook, this.state.selectedBook)}
                   />
                 </Carousel.Caption>
               </Carousel.Item>

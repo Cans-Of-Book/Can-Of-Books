@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Carousel, Image } from "react-bootstrap";
+import { Button, Carousel, Image, Container, Row, Col } from "react-bootstrap";
 import { useAuth0, Profile } from '@auth0/auth0-react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Books from "./Books";
@@ -71,7 +71,7 @@ class BestBooks extends Component {
       return <p>No More Books.</p>;
     } else {
       return (
-        <div>
+        <Container className="mt-4">
           {isAuthenticated ? (
             <div>
               <Carousel>
@@ -119,7 +119,7 @@ class BestBooks extends Component {
             <Route path="/profile" element={<Profile />} />
           </Routes>
           
-        </div>
+        </Container>
       );
     }
   }

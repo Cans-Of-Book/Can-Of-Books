@@ -111,7 +111,7 @@ class BestBooks extends Component {
               />
             </div>
           ) : (
-            <p>Log In</p>
+            <p>Welcome, Log In</p>
           )}
           <Routes>
             <Route path="/" element={<Books books={this.state.books} />} />

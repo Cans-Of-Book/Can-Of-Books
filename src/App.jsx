@@ -7,7 +7,7 @@ import Books from "./Books";
 import { Route, Routes } from "react-router-dom";
 import About from "./About";
 import BookFormModal from "./BookFormModal";
-
+import LoginButton from "./AuthButtons";
 const BACKEND_URL = import.meta.env.BACKEND_URL || "http://localhost:3001";
 
 class BestBooks extends Component {
@@ -111,7 +111,7 @@ class BestBooks extends Component {
               />
             </div>
           ) : (
-            <p>Welcome, Log In</p>
+            <p>Welcome, <LoginButton /></p>
           )}
           <Routes>
             <Route path="/" element={<Books books={this.state.books} />} />
